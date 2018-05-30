@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="Org-mode">
+<meta name="author" content="Jefferson Duarte, Edwin Hu, and Lance Young">
 
 <link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -237,6 +238,8 @@ Latest version available at SSRN: <a href="https://ssrn.com/abstract=2564369">ht
 </li>
 <li>JFE R1
 </li>
+<li>JF R2
+</li>
 <li>JF R1
 </li>
 </ul>
@@ -303,7 +306,7 @@ The data contains three files:
 <td class="text-right">permno</td>
 <td class="text-right">year</td>
 <td class="text-right">date</td>
-<td class="text-right">cpie_eo</td>
+<td class="text-right">cpie_pin</td>
 <td class="text-right">cpie_owr</td>
 <td class="text-right">cpie_mech</td>
 <td class="text-right">ret_o</td>
@@ -452,9 +455,16 @@ The data contains three files:
 </table>
 
 <p>
-<code>cpie_eo</code> is the \(CPIE_{EO}\) corresponding to the Easley and O&rsquo;Hara model.
-<code>cpie_owr</code> is the \(CPIE_{OWR}\) corresponding to the Odders-White and Ready
-(2008) model. <code>cpie_mech</code> is the \(CPIE_{Mech}\), which is a dummy variable
+<code>cpie_pin</code> corresponds to \(CPIE_{PIN}\) in the paper (the PIN model).
+</p>
+
+<p>
+<code>cpie_owr</code> corresponds to \(CPIE_{OWR}\) (the Odders-White and Ready
+(2008) model). 
+</p>
+
+<p>
+<code>cpie_mech</code> is the \(CPIE_{Mech}\), which is a dummy variable
 defined as:
 </p>
 \begin{equation}
@@ -466,18 +476,21 @@ CPIE_{Mech,j,t}=%
 \end{equation}
 
 <p>
-<code>ret_d</code>, <code>ret_o</code>, and <code>y_e</code> correspond to \((r_d,r_o,y_e)\). <code>n_buys</code> and
-<code>n_sells</code> corresponds to the \(\# Buys\) and \(\# Sells\), and <code>turn</code> is the sum,
-corresponding to \(turn\).
+<code>ret_d</code>, <code>ret_o</code>, and <code>y_e</code> correspond to \((r_d,r_o,y_e)\). 
+</p>
+
+<p>
+<code>n_buys</code> and <code>n_sells</code> corresponds to the \(B\) and \(S\), and <code>turn</code>
+is the sum, corresponding to \(turn\).
 </p>
 </div>
 </div>
 
 <div id="outline-container-eo" class="outline-3">
-<h3 id="eo"><a id="sec-" name="sec-"></a>EO</h3>
+<h3 id="eo"><a id="sec-" name="sec-"></a>PIN Model</h3>
 <div class="outline-text-3" id="text-eo">
 <p>
-<code>eo_yearly_JFE.csv</code> is sorted by <code>permno</code> and <code>year</code>:
+<code>pin_yearly_JFE.csv</code> is sorted by <code>permno</code> and <code>year</code>:
 </p>
 <table class="table table-striped table-bordered table-hover table-condensed">
 
@@ -607,7 +620,7 @@ corresponding to \(turn\).
 </div>
 
 <div id="outline-container-owr" class="outline-3">
-<h3 id="owr"><a id="sec-" name="sec-"></a>OWR</h3>
+<h3 id="owr"><a id="sec-" name="sec-"></a>OWR Model</h3>
 <div class="outline-text-3" id="text-owr">
 <p>
 <code>owr_yearly_JFE.csv</code> is sorted by <code>permno</code> and <code>year</code>:
@@ -762,8 +775,8 @@ corresponding to \(turn\).
 <li><a href="#data">Data</a>
 <ul class="nav">
 <li><a href="#daily">Daily</a></li>
-<li><a href="#eo">EO</a></li>
-<li><a href="#owr">OWR</a></li>
+<li><a href="#eo">PIN Model</a></li>
+<li><a href="#owr">OWR Model</a></li>
 </ul>
 </li>
 </ul>
@@ -771,7 +784,8 @@ corresponding to \(turn\).
 </nav>
 </div></div></div>
 <footer id="postamble" class="">
-<div><p class="date">Date: 2018-05-29</p>
+<div><p class="date">Date: 2018-05-30</p>
+<p class="author">Author: Jefferson Duarte, Edwin Hu, and Lance Young</p>
 </div>
 </footer>
 </body>
