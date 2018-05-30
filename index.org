@@ -4,6 +4,16 @@
 #+OPTIONS: author:t creator:nil timestamp:nil ^:nil toc:t H:10 ':t num:nil
 Jefferson Duarte, Edwin Hu, and Lance Young
 
+* Tracking :noexport:
+#+HTML_HEAD_EXTRA: <!-- Global site tag (gtag.js) - Google Analytics -->
+#+HTML_HEAD_EXTRA: <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67919104-2"></script>
+#+HTML_HEAD_EXTRA: <script>
+#+HTML_HEAD_EXTRA:   window.dataLayer = window.dataLayer || [];
+#+HTML_HEAD_EXTRA:   function gtag(){dataLayer.push(arguments);}
+#+HTML_HEAD_EXTRA:   gtag('js', new Date());
+#+HTML_HEAD_EXTRA:   gtag('config', 'UA-67919104-2');
+#+HTML_HEAD_EXTRA: </script>
+
 * Paper
 :PROPERTIES:
 :CUSTOM_ID: paper
