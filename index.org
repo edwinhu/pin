@@ -4,9 +4,6 @@
 #+OPTIONS: author:t creator:nil timestamp:nil ^:nil toc:t H:10 ':t num:nil
 Jefferson Duarte, Edwin Hu, and Lance Young
 
-* Todo :noexport:
-- Remove 
-
 * Paper
 :PROPERTIES:
 :CUSTOM_ID: paper
@@ -28,7 +25,7 @@ Latest version available at SSRN: https://ssrn.com/abstract=2564369
 :CUSTOM_ID: data
 :END:
 
-https://www.dropbox.com/s/pcc7jxgivlk59g7/cpie_data_JFE.zip?dl=1
+https://www.dropbox.com/s/45b42e89gaafg0n/cpie_data.zip?dl=1
 
 The data contains three files:
 - ~cpie_daily.csv~
