@@ -1,0 +1,114 @@
+#+TITLE: Does the PIN model mis-identify private information and if so, what is the alternative?
+#+AUTHOR: Jefferson Duarte, Edwin Hu, and Lance Young
+#+DATE: {{{time(%Y-%m-%d)}}}
+#+OPTIONS: author:t creator:nil timestamp:nil ^:nil toc:t H:10 ':t num:nil
+Jefferson Duarte, Edwin Hu, and Lance Young
+
+* Todo :noexport:
+- Remove 
+
+* Paper
+:PROPERTIES:
+:CUSTOM_ID: paper
+:END:
+
+Latest version available at SSRN: https://ssrn.com/abstract=2564369
+
+** Previous Versions
+:PROPERTIES:
+:CUSTOM_ID: prev
+:END:
+   - [[./JFE_R2.pdf][JFE R2]]
+   - [[./JFE_R1.pdf][JFE R1]]
+   - [[./JF_R2.pdf][JF R2]]
+   - [[./JF_R1.pdf][JF R1]]
+
+* Data
+:PROPERTIES:
+:CUSTOM_ID: data
+:END:
+
+https://www.dropbox.com/s/pcc7jxgivlk59g7/cpie_data_JFE.zip?dl=1
+
+The data contains three files:
+- ~cpie_daily.csv~
+- ~eo_yearly.csv~
+- ~owr_yearly.csv~
+
+** Daily
+:PROPERTIES:
+:CUSTOM_ID: daily
+:END:
+
+~cpie_daily.csv~ is sorted by ~permno~ and ~date~:
+| permno | year |     date | cpie_pin | cpie_owr | cpie_mech |   ret_o |   ret_d |     y_e | n_buys | n_sells | turn |
+|  10057 | 1993 | 19930104 |   0.0050 |   0.8481 |         0 | -0.0066 | -0.0138 | -0.3529 |      4 |       7 |   11 |
+|  10057 | 1993 | 19930105 |   0.0000 |   0.8756 |         0 |  0.0113 |  0.0120 |  0.9303 |      2 |       0 |    2 |
+|  10057 | 1993 | 19930106 |   0.0007 |   0.9116 |         0 | -0.0162 | -0.0143 | -0.3750 |      3 |       5 |    8 |
+|  10057 | 1993 | 19930107 |   0.0257 |   0.8159 |         0 |  0.0009 |  0.0147 |  0.2593 |      8 |       4 |   12 |
+|  10057 | 1993 | 19930108 |   0.0962 |   0.7249 |         1 |  0.0010 | -0.0068 | -0.5694 |      4 |      10 |   14 |
+|  10057 | 1993 | 19930111 |   0.0011 |   0.6903 |         0 |  0.0065 | -0.0026 |  0.4118 |      5 |       1 |    6 |
+|  10057 | 1993 | 19930112 |   0.9448 |   0.9682 |         1 |  0.0159 |  0.0223 |  0.1139 |     14 |      12 |   26 |
+|  10057 | 1993 | 19930113 |   0.4594 |   0.8174 |         1 |  0.0082 | -0.0195 | -0.6222 |      4 |      12 |   16 |
+|  10057 | 1993 | 19930114 |   0.0006 |   0.8755 |         0 | -0.0084 | -0.0151 | -0.3333 |      4 |       4 |    8 |
+
+~cpie_pin~ corresponds to $CPIE_{PIN}$ in the paper (the PIN model).
+
+~cpie_owr~ corresponds to $CPIE_{OWR}$ (the Odders-White and Ready
+(2008) model). 
+
+~cpie_mech~ is the $CPIE_{Mech}$, which is a dummy variable
+defined as:
+\begin{equation}
+CPIE_{Mech,j,t}=%
+\begin{cases}
+0, & \text{ if }turn_{j,t}<\overline{turn}_{j} \\ 
+1, & \text{ if }turn_{j,t}\geq \overline{turn}_{j},%
+\end{cases}
+\end{equation}
+
+~ret_d~, ~ret_o~, and ~y_e~ correspond to $(r_d,r_o,y_e)$. 
+
+~n_buys~ and ~n_sells~ corresponds to the $B$ and $S$, and ~turn~
+is the sum, corresponding to $turn$.
+
+** PIN Model
+:PROPERTIES:
+:CUSTOM_ID: eo
+:END:
+
+~pin_yearly.csv~ is sorted by ~permno~ and ~year~:
+| permno | year |      a |      eb |      es |       u |      d |
+|  10057 | 1993 | 0.2301 |  5.4697 |  5.7433 | 10.5068 | 0.6052 |
+|  10057 | 1994 | 0.0810 |  6.9449 |  6.6969 | 34.4076 | 0.3984 |
+|  10057 | 1995 | 0.2692 | 14.2371 | 16.8493 | 33.2753 | 0.8156 |
+|  10064 | 1993 | 0.2502 | 45.7045 | 41.3353 | 71.4708 | 0.6673 |
+|  10064 | 1994 | 0.2835 | 25.8929 | 27.7240 | 40.0622 | 0.6076 |
+|  10064 | 1995 | 0.1656 | 32.7579 | 38.9675 | 94.3707 | 0.8213 |
+|  10064 | 1996 | 0.1910 | 27.7305 | 39.9372 | 94.2733 | 0.8373 |
+|  10071 | 1993 | 0.2755 | 15.2707 | 14.3848 | 22.8094 | 0.6077 |
+|  10071 | 1994 | 0.2000 | 12.8310 | 14.1135 | 24.6615 | 0.6733 |
+
+~a~ is $\alpha$, ~eb~ is $\varepsilon_B$, ~es~ is $\varepsilon_S$, ~u~ is $\mu$, and ~d~ is $\delta$. 
+
+** OWR Model
+:PROPERTIES:
+:CUSTOM_ID: owr
+:END:
+
+~owr_yearly.csv~ is sorted by ~permno~ and ~year~:
+| permno | year |      a |     su |     sz |     si |    spd |    spo |
+|  10057 | 1993 | 0.7808 | 0.1886 | 0.4790 | 0.0226 | 0.0059 | 0.0101 |
+|  10057 | 1994 | 0.4135 | 0.1548 | 0.5136 | 0.0298 | 0.0074 | 0.0108 |
+|  10057 | 1995 | 0.7746 | 0.1368 | 0.4319 | 0.0251 | 0.0077 | 0.0000 |
+|  10064 | 1993 | 0.2991 | 0.1227 | 0.3457 | 0.0248 | 0.0085 | 0.0072 |
+|  10064 | 1994 | 0.6279 | 0.1516 | 0.3194 | 0.0222 | 0.0070 | 0.0047 |
+|  10064 | 1995 | 0.7526 | 0.1865 | 0.3440 | 0.0241 | 0.0073 | 0.0009 |
+|  10064 | 1996 | 0.6543 | 0.1391 | 0.3481 | 0.0299 | 0.0064 | 0.0000 |
+|  10071 | 1993 | 0.7885 | 0.1390 | 0.4146 | 0.0148 | 0.0045 | 0.0054 |
+|  10071 | 1994 | 0.6455 | 0.1417 | 0.4427 | 0.0132 | 0.0061 | 0.0050 |
+
+~a~ is $\alpha$, ~su~ is $\sigma_u$, ~sz~ is $\sigma_z$, ~si~ is $\sigma_i$, ~spd~ is $\sigma_{pd}$, and ~spo~ is $\sigma_{po}$.
+
+
+
