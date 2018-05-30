@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Does the PIN model mis-identify private information and if so, what is the alternative?</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">Does the PIN model mis-identify private information and if so, what is the alternative?</h1>
+<p>
+Jefferson Duarte, Edwin Hu, and Lance Young
+</p>
+
+<div id="outline-container-paper" class="outline-2">
+<h2 id="paper"><a id="sec-" name="sec-"></a>Paper</h2>
+<div class="outline-text-2" id="text-paper">
+<p>
+Latest version available at SSRN: <a href="https://ssrn.com/abstract=2564369">https://ssrn.com/abstract=2564369</a>
+</p>
+</div>
+
+<div id="outline-container-prev" class="outline-3">
+<h3 id="prev"><a id="sec-" name="sec-"></a>Previous Versions</h3>
+<div class="outline-text-3" id="text-prev">
+<ul class="org-ul">
+<li>JFE R2
+</li>
+<li>JFE R1
+</li>
+<li>JF R1
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-data" class="outline-2">
+<h2 id="data"><a id="sec-" name="sec-"></a>Data</h2>
+<div class="outline-text-2" id="text-data">
+<p>
+<a href="https://www.dropbox.com/s/pcc7jxgivlk59g7/cpie_data_JFE.zip?dl=1">https://www.dropbox.com/s/pcc7jxgivlk59g7/cpie_data_JFE.zip?dl=1</a>
+</p>
+
+<p>
+The data contains three files:
+</p>
+<ul class="org-ul">
+<li><code>cpie_daily_JFE.csv</code>
+</li>
+<li><code>eo_yearly_JFE.csv</code>
+</li>
+<li><code>owr_yearly_JFE.csv</code>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-daily" class="outline-3">
+<h3 id="daily"><a id="sec-" name="sec-"></a>Daily</h3>
+<div class="outline-text-3" id="text-daily">
+<p>
+<code>cpie_daily_JFE.csv</code> is sorted by <code>permno</code> and <code>date</code>:
+</p>
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+</colgroup>
+<tbody>
+<tr>
+<td class="text-right">permno</td>
+<td class="text-right">year</td>
+<td class="text-right">date</td>
+<td class="text-right">cpie_eo</td>
+<td class="text-right">cpie_owr</td>
+<td class="text-right">cpie_mech</td>
+<td class="text-right">ret_o</td>
+<td class="text-right">ret_d</td>
+<td class="text-right">y_e</td>
+<td class="text-right">n_buys</td>
+<td class="text-right">n_sells</td>
+<td class="text-right">turn</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930104</td>
+<td class="text-right">0.0050</td>
+<td class="text-right">0.8481</td>
+<td class="text-right">0</td>
+<td class="text-right">-0.0066</td>
+<td class="text-right">-0.0138</td>
+<td class="text-right">-0.3529</td>
+<td class="text-right">4</td>
+<td class="text-right">7</td>
+<td class="text-right">11</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930105</td>
+<td class="text-right">0.0000</td>
+<td class="text-right">0.8756</td>
+<td class="text-right">0</td>
+<td class="text-right">0.0113</td>
+<td class="text-right">0.0120</td>
+<td class="text-right">0.9303</td>
+<td class="text-right">2</td>
+<td class="text-right">0</td>
+<td class="text-right">2</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930106</td>
+<td class="text-right">0.0007</td>
+<td class="text-right">0.9116</td>
+<td class="text-right">0</td>
+<td class="text-right">-0.0162</td>
+<td class="text-right">-0.0143</td>
+<td class="text-right">-0.3750</td>
+<td class="text-right">3</td>
+<td class="text-right">5</td>
+<td class="text-right">8</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930107</td>
+<td class="text-right">0.0257</td>
+<td class="text-right">0.8159</td>
+<td class="text-right">0</td>
+<td class="text-right">0.0009</td>
+<td class="text-right">0.0147</td>
+<td class="text-right">0.2593</td>
+<td class="text-right">8</td>
+<td class="text-right">4</td>
+<td class="text-right">12</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930108</td>
+<td class="text-right">0.0962</td>
+<td class="text-right">0.7249</td>
+<td class="text-right">1</td>
+<td class="text-right">0.0010</td>
+<td class="text-right">-0.0068</td>
+<td class="text-right">-0.5694</td>
+<td class="text-right">4</td>
+<td class="text-right">10</td>
+<td class="text-right">14</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930111</td>
+<td class="text-right">0.0011</td>
+<td class="text-right">0.6903</td>
+<td class="text-right">0</td>
+<td class="text-right">0.0065</td>
+<td class="text-right">-0.0026</td>
+<td class="text-right">0.4118</td>
+<td class="text-right">5</td>
+<td class="text-right">1</td>
+<td class="text-right">6</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930112</td>
+<td class="text-right">0.9448</td>
+<td class="text-right">0.9682</td>
+<td class="text-right">1</td>
+<td class="text-right">0.0159</td>
+<td class="text-right">0.0223</td>
+<td class="text-right">0.1139</td>
+<td class="text-right">14</td>
+<td class="text-right">12</td>
+<td class="text-right">26</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930113</td>
+<td class="text-right">0.4594</td>
+<td class="text-right">0.8174</td>
+<td class="text-right">1</td>
+<td class="text-right">0.0082</td>
+<td class="text-right">-0.0195</td>
+<td class="text-right">-0.6222</td>
+<td class="text-right">4</td>
+<td class="text-right">12</td>
+<td class="text-right">16</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">19930114</td>
+<td class="text-right">0.0006</td>
+<td class="text-right">0.8755</td>
+<td class="text-right">0</td>
+<td class="text-right">-0.0084</td>
+<td class="text-right">-0.0151</td>
+<td class="text-right">-0.3333</td>
+<td class="text-right">4</td>
+<td class="text-right">4</td>
+<td class="text-right">8</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<code>cpie_eo</code> is the \(CPIE_{EO}\) corresponding to the Easley and O&rsquo;Hara model.
+<code>cpie_owr</code> is the \(CPIE_{OWR}\) corresponding to the Odders-White and Ready
+(2008) model. <code>cpie_mech</code> is the \(CPIE_{Mech}\), which is a dummy variable
+defined as:
+</p>
+\begin{equation}
+CPIE_{Mech,j,t}=%
+\begin{cases}
+0, & \text{ if }turn_{j,t}<\overline{turn}_{j} \\ 
+1, & \text{ if }turn_{j,t}\geq \overline{turn}_{j},%
+\end{cases}
+\end{equation}
+
+<p>
+<code>ret_d</code>, <code>ret_o</code>, and <code>y_e</code> correspond to \((r_d,r_o,y_e)\). <code>n_buys</code> and
+<code>n_sells</code> corresponds to the \(\# Buys\) and \(\# Sells\), and <code>turn</code> is the sum,
+corresponding to \(turn\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-eo" class="outline-3">
+<h3 id="eo"><a id="sec-" name="sec-"></a>EO</h3>
+<div class="outline-text-3" id="text-eo">
+<p>
+<code>eo_yearly_JFE.csv</code> is sorted by <code>permno</code> and <code>year</code>:
+</p>
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+</colgroup>
+<tbody>
+<tr>
+<td class="text-right">permno</td>
+<td class="text-right">year</td>
+<td class="text-right">a</td>
+<td class="text-right">eb</td>
+<td class="text-right">es</td>
+<td class="text-right">u</td>
+<td class="text-right">d</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.2301</td>
+<td class="text-right">5.4697</td>
+<td class="text-right">5.7433</td>
+<td class="text-right">10.5068</td>
+<td class="text-right">0.6052</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.0810</td>
+<td class="text-right">6.9449</td>
+<td class="text-right">6.6969</td>
+<td class="text-right">34.4076</td>
+<td class="text-right">0.3984</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1995</td>
+<td class="text-right">0.2692</td>
+<td class="text-right">14.2371</td>
+<td class="text-right">16.8493</td>
+<td class="text-right">33.2753</td>
+<td class="text-right">0.8156</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.2502</td>
+<td class="text-right">45.7045</td>
+<td class="text-right">41.3353</td>
+<td class="text-right">71.4708</td>
+<td class="text-right">0.6673</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.2835</td>
+<td class="text-right">25.8929</td>
+<td class="text-right">27.7240</td>
+<td class="text-right">40.0622</td>
+<td class="text-right">0.6076</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1995</td>
+<td class="text-right">0.1656</td>
+<td class="text-right">32.7579</td>
+<td class="text-right">38.9675</td>
+<td class="text-right">94.3707</td>
+<td class="text-right">0.8213</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1996</td>
+<td class="text-right">0.1910</td>
+<td class="text-right">27.7305</td>
+<td class="text-right">39.9372</td>
+<td class="text-right">94.2733</td>
+<td class="text-right">0.8373</td>
+</tr>
+
+<tr>
+<td class="text-right">10071</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.2755</td>
+<td class="text-right">15.2707</td>
+<td class="text-right">14.3848</td>
+<td class="text-right">22.8094</td>
+<td class="text-right">0.6077</td>
+</tr>
+
+<tr>
+<td class="text-right">10071</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.2000</td>
+<td class="text-right">12.8310</td>
+<td class="text-right">14.1135</td>
+<td class="text-right">24.6615</td>
+<td class="text-right">0.6733</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<code>a</code> is \(\alpha\), <code>eb</code> is \(\varepsilon_B\), <code>es</code> is \(\varepsilon_S\), <code>u</code> is \(\mu\), and <code>d</code> is \(\delta\). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-owr" class="outline-3">
+<h3 id="owr"><a id="sec-" name="sec-"></a>OWR</h3>
+<div class="outline-text-3" id="text-owr">
+<p>
+<code>owr_yearly_JFE.csv</code> is sorted by <code>permno</code> and <code>year</code>:
+</p>
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+</colgroup>
+<tbody>
+<tr>
+<td class="text-right">permno</td>
+<td class="text-right">year</td>
+<td class="text-right">a</td>
+<td class="text-right">su</td>
+<td class="text-right">sz</td>
+<td class="text-right">si</td>
+<td class="text-right">spd</td>
+<td class="text-right">spo</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.7808</td>
+<td class="text-right">0.1886</td>
+<td class="text-right">0.4790</td>
+<td class="text-right">0.0226</td>
+<td class="text-right">0.0059</td>
+<td class="text-right">0.0101</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.4135</td>
+<td class="text-right">0.1548</td>
+<td class="text-right">0.5136</td>
+<td class="text-right">0.0298</td>
+<td class="text-right">0.0074</td>
+<td class="text-right">0.0108</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1995</td>
+<td class="text-right">0.7746</td>
+<td class="text-right">0.1368</td>
+<td class="text-right">0.4319</td>
+<td class="text-right">0.0251</td>
+<td class="text-right">0.0077</td>
+<td class="text-right">0.0000</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.2991</td>
+<td class="text-right">0.1227</td>
+<td class="text-right">0.3457</td>
+<td class="text-right">0.0248</td>
+<td class="text-right">0.0085</td>
+<td class="text-right">0.0072</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.6279</td>
+<td class="text-right">0.1516</td>
+<td class="text-right">0.3194</td>
+<td class="text-right">0.0222</td>
+<td class="text-right">0.0070</td>
+<td class="text-right">0.0047</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1995</td>
+<td class="text-right">0.7526</td>
+<td class="text-right">0.1865</td>
+<td class="text-right">0.3440</td>
+<td class="text-right">0.0241</td>
+<td class="text-right">0.0073</td>
+<td class="text-right">0.0009</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1996</td>
+<td class="text-right">0.6543</td>
+<td class="text-right">0.1391</td>
+<td class="text-right">0.3481</td>
+<td class="text-right">0.0299</td>
+<td class="text-right">0.0064</td>
+<td class="text-right">0.0000</td>
+</tr>
+
+<tr>
+<td class="text-right">10071</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.7885</td>
+<td class="text-right">0.1390</td>
+<td class="text-right">0.4146</td>
+<td class="text-right">0.0148</td>
+<td class="text-right">0.0045</td>
+<td class="text-right">0.0054</td>
+</tr>
+
+<tr>
+<td class="text-right">10071</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.6455</td>
+<td class="text-right">0.1417</td>
+<td class="text-right">0.4427</td>
+<td class="text-right">0.0132</td>
+<td class="text-right">0.0061</td>
+<td class="text-right">0.0050</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<code>a</code> is \(\alpha\), <code>su</code> is \(\sigma_u\), <code>sz</code> is \(\sigma_z\), <code>si</code> is \(\sigma_i\), <code>spd</code> is \(\sigma_{pd}\), and <code>spo</code> is \(\sigma_{po}\).
+</p>
+</div>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#paper">Paper</a>
+<ul class="nav">
+<li><a href="#prev">Previous Versions</a></li>
+</ul>
+</li>
+<li><a href="#data">Data</a>
+<ul class="nav">
+<li><a href="#daily">Daily</a></li>
+<li><a href="#eo">EO</a></li>
+<li><a href="#owr">OWR</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="date">Date: 2018-05-29</p>
+</div>
+</footer>
+</body>
+</html>
