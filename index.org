@@ -25,11 +25,11 @@ Latest version available at SSRN: https://ssrn.com/abstract=2564369
 :PROPERTIES:
 :CUSTOM_ID: prev
 :END:
-   - [[./JFE_3.pdf][JFE #3]]
-   - [[./JFE_2.pdf][JFE #2]]
-   - [[./JFE_1.pdf][JFE #1]]
-   - [[./JF_2.pdf][JF #2]]
-   - [[./JF_1.pdf][JF #1]]
+   - [[./JFE_3.pdf][JFE #3 2017-11-24]]
+   - [[./JFE_2.pdf][JFE #2 2017-09-07]]
+   - [[./JFE_1.pdf][JFE #1 2017-03-10]]
+   - [[./JF_2.pdf][JF #2 2016-04-29]]
+   - [[./JF_1.pdf][JF #1 2015-05-01]]
 
 * Data
 :PROPERTIES:
