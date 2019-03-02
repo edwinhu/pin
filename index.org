@@ -1,4 +1,4 @@
-#+TITLE: Does the PIN model mis-identify private information and if so, what is the alternative?
+#+TITLE: A comparison of some structural models of private information arrival
 #+AUTHOR: Jefferson Duarte, Edwin Hu, and Lance Young
 #+DATE: {{{time(%Y-%m-%d)}}}
 #+OPTIONS: author:t creator:nil timestamp:nil ^:nil toc:t H:10 ':t num:nil
@@ -25,6 +25,7 @@ Latest version available at SSRN: https://ssrn.com/abstract=2564369
 :PROPERTIES:
 :CUSTOM_ID: prev
 :END:
+   - [[./JFE_4.pdf][JFE #4 2018-12-17]]
    - [[./JFE_3.pdf][JFE #3 2017-11-24]]
    - [[./JFE_2.pdf][JFE #2 2017-09-07]]
    - [[./JFE_1.pdf][JFE #1 2017-03-10]]
@@ -38,9 +39,11 @@ Latest version available at SSRN: https://ssrn.com/abstract=2564369
 
 https://www.dropbox.com/s/45b42e89gaafg0n/cpie_data.zip?dl=1
 
-The data contains three files:
+The data contains several files:
 - ~cpie_daily.csv~
 - ~eo_yearly.csv~
+- ~dy_yearly.csv~
+- ~gpin_yearly.csv~
 - ~owr_yearly.csv~
 
 ** Daily
@@ -49,18 +52,22 @@ The data contains three files:
 :END:
 
 ~cpie_daily.csv~ is sorted by ~permno~ and ~date~:
-| permno | year |     date | cpie_pin | cpie_owr | cpie_mech |   ret_o |   ret_d |     y_e | n_buys | n_sells | turn |
-|  10057 | 1993 | 19930104 |   0.0050 |   0.8481 |         0 | -0.0066 | -0.0138 | -0.3529 |      4 |       7 |   11 |
-|  10057 | 1993 | 19930105 |   0.0000 |   0.8756 |         0 |  0.0113 |  0.0120 |  0.9303 |      2 |       0 |    2 |
-|  10057 | 1993 | 19930106 |   0.0007 |   0.9116 |         0 | -0.0162 | -0.0143 | -0.3750 |      3 |       5 |    8 |
-|  10057 | 1993 | 19930107 |   0.0257 |   0.8159 |         0 |  0.0009 |  0.0147 |  0.2593 |      8 |       4 |   12 |
-|  10057 | 1993 | 19930108 |   0.0962 |   0.7249 |         1 |  0.0010 | -0.0068 | -0.5694 |      4 |      10 |   14 |
-|  10057 | 1993 | 19930111 |   0.0011 |   0.6903 |         0 |  0.0065 | -0.0026 |  0.4118 |      5 |       1 |    6 |
-|  10057 | 1993 | 19930112 |   0.9448 |   0.9682 |         1 |  0.0159 |  0.0223 |  0.1139 |     14 |      12 |   26 |
-|  10057 | 1993 | 19930113 |   0.4594 |   0.8174 |         1 |  0.0082 | -0.0195 | -0.6222 |      4 |      12 |   16 |
-|  10057 | 1993 | 19930114 |   0.0006 |   0.8755 |         0 | -0.0084 | -0.0151 | -0.3333 |      4 |       4 |    8 |
+| permno | year |     date | cpie_pin | cpie_dy | cpie_gpin | cpie_owr | cpie_mech |  ret_o |  ret_d |   y_e | n_buys | n_sells | turn |
+|  10057 | 1993 | 19930104 |   0.0050 |   0.608 |     0.011 |     0.85 |         0 | -0.007 | -0.014 | -0.35 |      4 |       7 |   11 |
+|  10057 | 1993 | 19930105 |   0.0000 |   0.003 |     0.071 |     0.88 |         0 |  0.011 |  0.012 |  0.93 |      2 |       0 |    2 |
+|  10057 | 1993 | 19930106 |   0.0007 |   0.212 |     0.014 |     0.91 |         0 | -0.016 | -0.014 | -0.38 |      3 |       5 |    8 |
+|  10057 | 1993 | 19930107 |   0.0257 |   0.131 |     0.433 |     0.82 |         0 |  0.001 |  0.015 |  0.26 |      8 |       4 |   12 |
+|  10057 | 1993 | 19930108 |   0.0962 |   0.946 |     0.003 |     0.72 |         1 |  0.001 | -0.007 | -0.57 |      4 |      10 |   14 |
+|  10057 | 1993 | 19930111 |   0.0011 |   0.009 |     0.281 |     0.69 |         0 |  0.007 | -0.003 |  0.41 |      5 |       1 |    6 |
+|  10057 | 1993 | 19930112 |   0.9448 |   0.226 |     0.528 |     0.97 |         1 |  0.016 |  0.022 |  0.11 |     14 |      12 |   26 |
+|  10057 | 1993 | 19930113 |   0.4594 |   0.973 |     0.001 |     0.82 |         1 |  0.008 | -0.020 | -0.62 |      4 |      12 |   16 |
+|  10057 | 1993 | 19930114 |   0.0006 |   0.101 |     0.044 |     0.88 |         0 | -0.008 | -0.015 | -0.33 |      4 |       4 |    8 |
 
 ~cpie_pin~ corresponds to $CPIE_{PIN}$ in the paper (the PIN model).
+
+~cpie_dy~ corresponds to $CPIE_{DY}$ in the paper (the DY model).
+
+~cpie_gpin~ corresponds to $CPIE_{GPIN}$ in the paper (the GPIN model).
 
 ~cpie_owr~ corresponds to $CPIE_{OWR}$ (the Odders-White and Ready
 (2008) model). 
@@ -98,6 +105,47 @@ is the sum, corresponding to $turn$.
 |  10071 | 1994 | 0.2000 | 12.8310 | 14.1135 | 24.6615 | 0.6733 |
 
 ~a~ is $\alpha$, ~eb~ is $\varepsilon_B$, ~es~ is $\varepsilon_S$, ~u~ is $\mu$, and ~d~ is $\delta$. 
+
+** DY Model
+:PROPERTIES:
+:CUSTOM_ID: dy
+:END:
+
+~dy_yearly.csv~ is sorted by ~permno~ and ~year~:
+| permno | year |    a |    eb |    es |    ub |     us |    d |   tn |     sb |     ss |
+|  10057 | 1993 | 0.38 |  4.67 |  3.55 | 10.63 |   5.00 | 0.21 | 0.20 |   7.67 |   7.74 |
+|  10057 | 1994 | 0.30 |  4.52 |  4.84 | 10.81 |   9.21 | 0.51 | 0.07 |  26.43 |  32.65 |
+|  10057 | 1995 | 0.43 | 11.92 |  9.46 | 26.59 |  10.60 | 0.40 | 0.24 |  21.59 |  25.63 |
+|  10064 | 1993 | 0.36 | 35.98 | 37.14 | 31.10 |  69.81 | 0.76 | 0.15 |  82.19 |  30.60 |
+|  10064 | 1994 | 0.49 | 16.74 | 24.25 | 21.83 |  45.73 | 0.88 | 0.24 |  27.10 |  21.28 |
+|  10064 | 1995 | 0.37 | 27.68 | 31.84 | 39.64 |  43.77 | 0.59 | 0.09 | 103.78 |  39.22 |
+|  10064 | 1996 | 0.21 | 26.46 | 38.54 | 78.89 | 124.34 | 0.87 | 0.02 | 226.61 | 623.26 |
+|  10071 | 1993 | 0.36 | 11.91 | 11.46 | 11.65 |  17.20 | 0.60 | 0.20 |  23.35 |  14.43 |
+|  10071 | 1994 | 0.44 |  9.46 | 11.76 | 11.65 |  15.28 | 0.74 | 0.10 |  30.51 |  21.51 |
+
+~a~ is $\alpha$, ~eb~ is $\varepsilon_B$, ~es~ is $\varepsilon_S$,
+~ub~ is $\mu_B$, ~us~ is $\mu_S$, ~d~ is $\delta$, ~tn~ is $\theta$,
+~sb~ is $\Delta_B$, and ~ss~ is $\Delta_S$.
+
+** GPIN Model
+:PROPERTIES:
+:CUSTOM_ID: gpin
+:END:
+
+~gpin_yearly.csv~ is sorted by ~permno~ and ~year~:
+| permno | year |    a |    r |    p |  eta |    d |   th |
+|  10057 | 1993 | 0.30 | 6.51 | 0.62 | 1.00 | 1.00 | 0.44 |
+|  10057 | 1994 | 0.17 | 2.27 | 0.85 | 1.00 | 0.40 | 0.51 |
+|  10057 | 1995 | 0.28 | 2.89 | 0.92 | 1.00 | 0.48 | 0.54 |
+|  10064 | 1993 | 0.19 | 7.25 | 0.93 | 0.75 | 0.57 | 0.53 |
+|  10064 | 1994 | 0.16 | 8.48 | 0.87 | 0.78 | 0.48 | 0.50 |
+|  10064 | 1995 | 0.18 | 5.88 | 0.93 | 0.77 | 0.76 | 0.44 |
+|  10064 | 1996 | 0.11 | 2.41 | 0.97 | 0.90 | 0.59 | 0.44 |
+|  10071 | 1993 | 0.21 | 6.46 | 0.83 | 0.79 | 0.60 | 0.52 |
+|  10071 | 1994 | 0.13 | 5.01 | 0.85 | 0.88 | 0.80 | 0.44 |
+
+~a~ is $\alpha$, ~r~ is $r$, ~p~ is $p$, ~eta~ is $\eta$, ~d~ is
+$\delta$, and ~th~ is $\theta$.
 
 ** OWR Model
 :PROPERTIES:

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Does the PIN model mis-identify private information and if so, what is the alternative?</title>
+<title>A comparison of some structural models of private information arrival</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="Org-mode">
@@ -224,7 +224,7 @@ MathJax.Hub.Config({
 </head>
 <body>
 <div id="content" class="container">
-<div class="row"><div class="col-md-9"><h1 class="title">Does the PIN model mis-identify private information and if so, what is the alternative?</h1>
+<div class="row"><div class="col-md-9"><h1 class="title">A comparison of some structural models of private information arrival</h1>
 <p>
 Jefferson Duarte, Edwin Hu, and Lance Young
 </p>
@@ -241,6 +241,8 @@ Latest version available at SSRN: <a href="https://ssrn.com/abstract=2564369">ht
 <h3 id="prev"><a id="sec-" name="sec-"></a>Previous Versions</h3>
 <div class="outline-text-3" id="text-prev">
 <ul class="org-ul">
+<li><a href="./JFE_4.pdf">JFE #4 2018-12-17</a>
+</li>
 <li><a href="./JFE_3.pdf">JFE #3 2017-11-24</a>
 </li>
 <li><a href="./JFE_2.pdf">JFE #2 2017-09-07</a>
@@ -264,12 +266,16 @@ Latest version available at SSRN: <a href="https://ssrn.com/abstract=2564369">ht
 </p>
 
 <p>
-The data contains three files:
+The data contains several files:
 </p>
 <ul class="org-ul">
 <li><code>cpie_daily.csv</code>
 </li>
 <li><code>eo_yearly.csv</code>
+</li>
+<li><code>dy_yearly.csv</code>
+</li>
+<li><code>gpin_yearly.csv</code>
 </li>
 <li><code>owr_yearly.csv</code>
 </li>
@@ -309,6 +315,10 @@ The data contains three files:
 <col  class="right">
 
 <col  class="right">
+
+<col  class="right">
+
+<col  class="right">
 </colgroup>
 <tbody>
 <tr>
@@ -316,6 +326,8 @@ The data contains three files:
 <td class="text-right">year</td>
 <td class="text-right">date</td>
 <td class="text-right">cpie_pin</td>
+<td class="text-right">cpie_dy</td>
+<td class="text-right">cpie_gpin</td>
 <td class="text-right">cpie_owr</td>
 <td class="text-right">cpie_mech</td>
 <td class="text-right">ret_o</td>
@@ -331,11 +343,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930104</td>
 <td class="text-right">0.0050</td>
-<td class="text-right">0.8481</td>
+<td class="text-right">0.608</td>
+<td class="text-right">0.011</td>
+<td class="text-right">0.85</td>
 <td class="text-right">0</td>
-<td class="text-right">-0.0066</td>
-<td class="text-right">-0.0138</td>
-<td class="text-right">-0.3529</td>
+<td class="text-right">-0.007</td>
+<td class="text-right">-0.014</td>
+<td class="text-right">-0.35</td>
 <td class="text-right">4</td>
 <td class="text-right">7</td>
 <td class="text-right">11</td>
@@ -346,11 +360,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930105</td>
 <td class="text-right">0.0000</td>
-<td class="text-right">0.8756</td>
+<td class="text-right">0.003</td>
+<td class="text-right">0.071</td>
+<td class="text-right">0.88</td>
 <td class="text-right">0</td>
-<td class="text-right">0.0113</td>
-<td class="text-right">0.0120</td>
-<td class="text-right">0.9303</td>
+<td class="text-right">0.011</td>
+<td class="text-right">0.012</td>
+<td class="text-right">0.93</td>
 <td class="text-right">2</td>
 <td class="text-right">0</td>
 <td class="text-right">2</td>
@@ -361,11 +377,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930106</td>
 <td class="text-right">0.0007</td>
-<td class="text-right">0.9116</td>
+<td class="text-right">0.212</td>
+<td class="text-right">0.014</td>
+<td class="text-right">0.91</td>
 <td class="text-right">0</td>
-<td class="text-right">-0.0162</td>
-<td class="text-right">-0.0143</td>
-<td class="text-right">-0.3750</td>
+<td class="text-right">-0.016</td>
+<td class="text-right">-0.014</td>
+<td class="text-right">-0.38</td>
 <td class="text-right">3</td>
 <td class="text-right">5</td>
 <td class="text-right">8</td>
@@ -376,11 +394,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930107</td>
 <td class="text-right">0.0257</td>
-<td class="text-right">0.8159</td>
+<td class="text-right">0.131</td>
+<td class="text-right">0.433</td>
+<td class="text-right">0.82</td>
 <td class="text-right">0</td>
-<td class="text-right">0.0009</td>
-<td class="text-right">0.0147</td>
-<td class="text-right">0.2593</td>
+<td class="text-right">0.001</td>
+<td class="text-right">0.015</td>
+<td class="text-right">0.26</td>
 <td class="text-right">8</td>
 <td class="text-right">4</td>
 <td class="text-right">12</td>
@@ -391,11 +411,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930108</td>
 <td class="text-right">0.0962</td>
-<td class="text-right">0.7249</td>
+<td class="text-right">0.946</td>
+<td class="text-right">0.003</td>
+<td class="text-right">0.72</td>
 <td class="text-right">1</td>
-<td class="text-right">0.0010</td>
-<td class="text-right">-0.0068</td>
-<td class="text-right">-0.5694</td>
+<td class="text-right">0.001</td>
+<td class="text-right">-0.007</td>
+<td class="text-right">-0.57</td>
 <td class="text-right">4</td>
 <td class="text-right">10</td>
 <td class="text-right">14</td>
@@ -406,11 +428,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930111</td>
 <td class="text-right">0.0011</td>
-<td class="text-right">0.6903</td>
+<td class="text-right">0.009</td>
+<td class="text-right">0.281</td>
+<td class="text-right">0.69</td>
 <td class="text-right">0</td>
-<td class="text-right">0.0065</td>
-<td class="text-right">-0.0026</td>
-<td class="text-right">0.4118</td>
+<td class="text-right">0.007</td>
+<td class="text-right">-0.003</td>
+<td class="text-right">0.41</td>
 <td class="text-right">5</td>
 <td class="text-right">1</td>
 <td class="text-right">6</td>
@@ -421,11 +445,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930112</td>
 <td class="text-right">0.9448</td>
-<td class="text-right">0.9682</td>
+<td class="text-right">0.226</td>
+<td class="text-right">0.528</td>
+<td class="text-right">0.97</td>
 <td class="text-right">1</td>
-<td class="text-right">0.0159</td>
-<td class="text-right">0.0223</td>
-<td class="text-right">0.1139</td>
+<td class="text-right">0.016</td>
+<td class="text-right">0.022</td>
+<td class="text-right">0.11</td>
 <td class="text-right">14</td>
 <td class="text-right">12</td>
 <td class="text-right">26</td>
@@ -436,11 +462,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930113</td>
 <td class="text-right">0.4594</td>
-<td class="text-right">0.8174</td>
+<td class="text-right">0.973</td>
+<td class="text-right">0.001</td>
+<td class="text-right">0.82</td>
 <td class="text-right">1</td>
-<td class="text-right">0.0082</td>
-<td class="text-right">-0.0195</td>
-<td class="text-right">-0.6222</td>
+<td class="text-right">0.008</td>
+<td class="text-right">-0.020</td>
+<td class="text-right">-0.62</td>
 <td class="text-right">4</td>
 <td class="text-right">12</td>
 <td class="text-right">16</td>
@@ -451,11 +479,13 @@ The data contains three files:
 <td class="text-right">1993</td>
 <td class="text-right">19930114</td>
 <td class="text-right">0.0006</td>
-<td class="text-right">0.8755</td>
+<td class="text-right">0.101</td>
+<td class="text-right">0.044</td>
+<td class="text-right">0.88</td>
 <td class="text-right">0</td>
-<td class="text-right">-0.0084</td>
-<td class="text-right">-0.0151</td>
-<td class="text-right">-0.3333</td>
+<td class="text-right">-0.008</td>
+<td class="text-right">-0.015</td>
+<td class="text-right">-0.33</td>
 <td class="text-right">4</td>
 <td class="text-right">4</td>
 <td class="text-right">8</td>
@@ -465,6 +495,14 @@ The data contains three files:
 
 <p>
 <code>cpie_pin</code> corresponds to \(CPIE_{PIN}\) in the paper (the PIN model).
+</p>
+
+<p>
+<code>cpie_dy</code> corresponds to \(CPIE_{DY}\) in the paper (the DY model).
+</p>
+
+<p>
+<code>cpie_gpin</code> corresponds to \(CPIE_{GPIN}\) in the paper (the GPIN model).
 </p>
 
 <p>
@@ -628,6 +666,335 @@ is the sum, corresponding to \(turn\).
 </div>
 </div>
 
+<div id="outline-container-dy" class="outline-3">
+<h3 id="dy"><a id="sec-" name="sec-"></a>DY Model</h3>
+<div class="outline-text-3" id="text-dy">
+<p>
+<code>dy_yearly.csv</code> is sorted by <code>permno</code> and <code>year</code>:
+</p>
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+</colgroup>
+<tbody>
+<tr>
+<td class="text-right">permno</td>
+<td class="text-right">year</td>
+<td class="text-right">a</td>
+<td class="text-right">eb</td>
+<td class="text-right">es</td>
+<td class="text-right">ub</td>
+<td class="text-right">us</td>
+<td class="text-right">d</td>
+<td class="text-right">tn</td>
+<td class="text-right">sb</td>
+<td class="text-right">ss</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.38</td>
+<td class="text-right">4.67</td>
+<td class="text-right">3.55</td>
+<td class="text-right">10.63</td>
+<td class="text-right">5.00</td>
+<td class="text-right">0.21</td>
+<td class="text-right">0.20</td>
+<td class="text-right">7.67</td>
+<td class="text-right">7.74</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.30</td>
+<td class="text-right">4.52</td>
+<td class="text-right">4.84</td>
+<td class="text-right">10.81</td>
+<td class="text-right">9.21</td>
+<td class="text-right">0.51</td>
+<td class="text-right">0.07</td>
+<td class="text-right">26.43</td>
+<td class="text-right">32.65</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1995</td>
+<td class="text-right">0.43</td>
+<td class="text-right">11.92</td>
+<td class="text-right">9.46</td>
+<td class="text-right">26.59</td>
+<td class="text-right">10.60</td>
+<td class="text-right">0.40</td>
+<td class="text-right">0.24</td>
+<td class="text-right">21.59</td>
+<td class="text-right">25.63</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.36</td>
+<td class="text-right">35.98</td>
+<td class="text-right">37.14</td>
+<td class="text-right">31.10</td>
+<td class="text-right">69.81</td>
+<td class="text-right">0.76</td>
+<td class="text-right">0.15</td>
+<td class="text-right">82.19</td>
+<td class="text-right">30.60</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.49</td>
+<td class="text-right">16.74</td>
+<td class="text-right">24.25</td>
+<td class="text-right">21.83</td>
+<td class="text-right">45.73</td>
+<td class="text-right">0.88</td>
+<td class="text-right">0.24</td>
+<td class="text-right">27.10</td>
+<td class="text-right">21.28</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1995</td>
+<td class="text-right">0.37</td>
+<td class="text-right">27.68</td>
+<td class="text-right">31.84</td>
+<td class="text-right">39.64</td>
+<td class="text-right">43.77</td>
+<td class="text-right">0.59</td>
+<td class="text-right">0.09</td>
+<td class="text-right">103.78</td>
+<td class="text-right">39.22</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1996</td>
+<td class="text-right">0.21</td>
+<td class="text-right">26.46</td>
+<td class="text-right">38.54</td>
+<td class="text-right">78.89</td>
+<td class="text-right">124.34</td>
+<td class="text-right">0.87</td>
+<td class="text-right">0.02</td>
+<td class="text-right">226.61</td>
+<td class="text-right">623.26</td>
+</tr>
+
+<tr>
+<td class="text-right">10071</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.36</td>
+<td class="text-right">11.91</td>
+<td class="text-right">11.46</td>
+<td class="text-right">11.65</td>
+<td class="text-right">17.20</td>
+<td class="text-right">0.60</td>
+<td class="text-right">0.20</td>
+<td class="text-right">23.35</td>
+<td class="text-right">14.43</td>
+</tr>
+
+<tr>
+<td class="text-right">10071</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.44</td>
+<td class="text-right">9.46</td>
+<td class="text-right">11.76</td>
+<td class="text-right">11.65</td>
+<td class="text-right">15.28</td>
+<td class="text-right">0.74</td>
+<td class="text-right">0.10</td>
+<td class="text-right">30.51</td>
+<td class="text-right">21.51</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<code>a</code> is \(\alpha\), <code>eb</code> is \(\varepsilon_B\), <code>es</code> is \(\varepsilon_S\),
+<code>ub</code> is \(\mu_B\), <code>us</code> is \(\mu_S\), <code>d</code> is \(\delta\), <code>tn</code> is \(\theta\),
+<code>sb</code> is \(\Delta_B\), and <code>ss</code> is \(\Delta_S\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-gpin" class="outline-3">
+<h3 id="gpin"><a id="sec-" name="sec-"></a>GPIN Model</h3>
+<div class="outline-text-3" id="text-gpin">
+<p>
+<code>gpin_yearly.csv</code> is sorted by <code>permno</code> and <code>year</code>:
+</p>
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+</colgroup>
+<tbody>
+<tr>
+<td class="text-right">permno</td>
+<td class="text-right">year</td>
+<td class="text-right">a</td>
+<td class="text-right">r</td>
+<td class="text-right">p</td>
+<td class="text-right">eta</td>
+<td class="text-right">d</td>
+<td class="text-right">th</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.30</td>
+<td class="text-right">6.51</td>
+<td class="text-right">0.62</td>
+<td class="text-right">1.00</td>
+<td class="text-right">1.00</td>
+<td class="text-right">0.44</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.17</td>
+<td class="text-right">2.27</td>
+<td class="text-right">0.85</td>
+<td class="text-right">1.00</td>
+<td class="text-right">0.40</td>
+<td class="text-right">0.51</td>
+</tr>
+
+<tr>
+<td class="text-right">10057</td>
+<td class="text-right">1995</td>
+<td class="text-right">0.28</td>
+<td class="text-right">2.89</td>
+<td class="text-right">0.92</td>
+<td class="text-right">1.00</td>
+<td class="text-right">0.48</td>
+<td class="text-right">0.54</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.19</td>
+<td class="text-right">7.25</td>
+<td class="text-right">0.93</td>
+<td class="text-right">0.75</td>
+<td class="text-right">0.57</td>
+<td class="text-right">0.53</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.16</td>
+<td class="text-right">8.48</td>
+<td class="text-right">0.87</td>
+<td class="text-right">0.78</td>
+<td class="text-right">0.48</td>
+<td class="text-right">0.50</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1995</td>
+<td class="text-right">0.18</td>
+<td class="text-right">5.88</td>
+<td class="text-right">0.93</td>
+<td class="text-right">0.77</td>
+<td class="text-right">0.76</td>
+<td class="text-right">0.44</td>
+</tr>
+
+<tr>
+<td class="text-right">10064</td>
+<td class="text-right">1996</td>
+<td class="text-right">0.11</td>
+<td class="text-right">2.41</td>
+<td class="text-right">0.97</td>
+<td class="text-right">0.90</td>
+<td class="text-right">0.59</td>
+<td class="text-right">0.44</td>
+</tr>
+
+<tr>
+<td class="text-right">10071</td>
+<td class="text-right">1993</td>
+<td class="text-right">0.21</td>
+<td class="text-right">6.46</td>
+<td class="text-right">0.83</td>
+<td class="text-right">0.79</td>
+<td class="text-right">0.60</td>
+<td class="text-right">0.52</td>
+</tr>
+
+<tr>
+<td class="text-right">10071</td>
+<td class="text-right">1994</td>
+<td class="text-right">0.13</td>
+<td class="text-right">5.01</td>
+<td class="text-right">0.85</td>
+<td class="text-right">0.88</td>
+<td class="text-right">0.80</td>
+<td class="text-right">0.44</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<code>a</code> is \(\alpha\), <code>r</code> is \(r\), <code>p</code> is \(p\), <code>eta</code> is \(\eta\), <code>d</code> is
+\(\delta\), and <code>th</code> is \(\theta\).
+</p>
+</div>
+</div>
+
 <div id="outline-container-owr" class="outline-3">
 <h3 id="owr"><a id="sec-" name="sec-"></a>OWR Model</h3>
 <div class="outline-text-3" id="text-owr">
@@ -785,6 +1152,8 @@ is the sum, corresponding to \(turn\).
 <ul class="nav">
 <li><a href="#daily">Daily</a></li>
 <li><a href="#eo">PIN Model</a></li>
+<li><a href="#dy">DY Model</a></li>
+<li><a href="#gpin">GPIN Model</a></li>
 <li><a href="#owr">OWR Model</a></li>
 </ul>
 </li>
@@ -793,7 +1162,7 @@ is the sum, corresponding to \(turn\).
 </nav>
 </div></div></div>
 <footer id="postamble" class="">
-<div><p class="date">Date: 2018-06-02</p>
+<div><p class="date">Date: 2019-03-02</p>
 <p class="author">Author: Jefferson Duarte, Edwin Hu, and Lance Young</p>
 </div>
 </footer>
