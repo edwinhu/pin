@@ -193,5 +193,5 @@ find our work.
 - Estimates are based on up to five random starting points.
 
 #+CAPTION: Estimates example --- XOM 2018 GPIN model
-#+ATTR_HTML: :width 60% :align center
+#+ATTR_HTML: :width 80% :align center
 [[./xom-gpin-2018.png]]
