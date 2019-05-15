@@ -1,10 +1,7 @@
 #+TITLE: A comparison of some structural models of private information arrival
 #+AUTHOR: Jefferson Duarte, Edwin Hu, and Lance Young
 #+DATE: {{{time(%Y-%m-%d)}}}
-#+OPTIONS: author:t creator:nil timestamp:nil ^:nil toc:t H:10 ':t num:nil
-Jefferson Duarte, Edwin Hu, and Lance Young
-
-* Tracking :noexport:
+#+OPTIONS: author:t creator:nil timestamp:nil ^:nil toc:t H:10 ':t num:nil 
 #+HTML_HEAD_EXTRA: <!-- Global site tag (gtag.js) - Google Analytics -->
 #+HTML_HEAD_EXTRA: <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67919104-2"></script>
 #+HTML_HEAD_EXTRA: <script>
@@ -13,6 +10,8 @@ Jefferson Duarte, Edwin Hu, and Lance Young
 #+HTML_HEAD_EXTRA:   gtag('js', new Date());
 #+HTML_HEAD_EXTRA:   gtag('config', 'UA-67919104-2');
 #+HTML_HEAD_EXTRA: </script>
+
+Jefferson Duarte, Edwin Hu, and Lance Young
 
 * Paper
 :PROPERTIES:
@@ -168,3 +167,31 @@ $\delta$, and ~th~ is $\theta$.
 
 
 
+
+
+* **New data**
+:PROPERTIES:
+:CUSTOM_ID: new
+:END:
+
+2013--2018 GPIN
+and OWR estimates:\\
+https://www.dropbox.com/s/cao9hzldr2eabhj/pin-est-1318.zip?dl=1
+
+Based on requests from other researchers we have updated our estimates
+beyond the sample period in our paper. These estimates may be used as
+starting points for your own estimation, or used as-is. We have done
+some basic quality checks with the estimates, but not to the full
+extent of the 1993--2012 sample from the paper. In the paper we also
+only used NYSE-listed stocks. If you use these estimates in your work,
+please cite to our paper and website so that future researchers can
+find our work.
+
+- Based on [[https://wrds-web.wharton.upenn.edu/wrds/ds/wrdsapps/intradayind/taqms/index.cfm?navId=524][WRDS DTAQ Intraday Indicators]].
+- CRSP shrcd 10, 11 and exchcd 1, 2, 3, 4.
+- Unlike the paper we do not remove distribution/event days for the OWR.
+- Estimates are based on up to five random starting points.
+
+#+CAPTION: Estimates example --- XOM 2018 GPIN model
+#+ATTR_HTML: :width 60% :align center
+[[./xom-gpin-2018.png]]
