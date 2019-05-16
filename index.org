@@ -183,9 +183,10 @@ beyond the sample period in our paper. These estimates may be used as
 starting points for your own estimation, or used as-is. We have done
 some basic quality checks with the estimates, but not to the full
 extent of the 1993--2012 sample from the paper. In the paper we also
-only used NYSE-listed stocks. If you use these estimates in your work,
-please cite to our paper and website so that future researchers can
-find our work.
+only used NYSE-listed stocks. If you have any questions, comments,
+suggestions, or find any issues please feel free to contact me. If you
+use these estimates in your work, please cite to our paper and website
+so that future researchers can find our work.
 
 - Based on [[https://wrds-web.wharton.upenn.edu/wrds/ds/wrdsapps/intradayind/taqms/index.cfm?navId=524][WRDS DTAQ Intraday Indicators]].
 - CRSP shrcd 10, 11 and exchcd 1, 2, 3, 4.
