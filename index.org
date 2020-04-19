@@ -174,9 +174,9 @@ $\delta$, and ~th~ is $\theta$.
 :CUSTOM_ID: new
 :END:
 
-2013--2018 GPIN
+2013--2019 GPIN
 and OWR estimates:\\
-https://www.dropbox.com/s/cao9hzldr2eabhj/pin-est-1318.zip?dl=1
+https://www.dropbox.com/s/6xaa3x5zbmvyyq1/pin-est-1319.zip?dl=1
 
 Based on requests from other researchers we have updated our estimates
 beyond the sample period in our paper. These estimates may be used as
