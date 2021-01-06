@@ -196,3 +196,10 @@ so that future researchers can find our work.
 #+CAPTION: Estimates example --- XOM 2018 GPIN model
 #+ATTR_HTML: :width 80% :align center
 [[./xom-gpin-2018.png]]
+* Code
+:PROPERTIES:
+:CUSTOM_ID: data
+:END:
+
+Code is now available on its own GitHub [[https://github.com/edwinhu/pin-code][page]]. A detailed description of the code
+is also available [[./pin-code][here]].
