@@ -1,0 +1,3 @@
+[submodule "pin-code"]
+	path = pin-code
+	url = https://github.com/edwinhu/pin-code
