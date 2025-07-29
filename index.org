@@ -10,6 +10,7 @@
 #+HTML_HEAD_EXTRA:   gtag('js', new Date());
 #+HTML_HEAD_EXTRA:   gtag('config', 'UA-67919104-2');
 #+HTML_HEAD_EXTRA: </script>
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" href="https://latex.vercel.app/style.css">
 
 Jefferson Duarte, Edwin Hu, and Lance Young
 
@@ -200,6 +201,9 @@ so that future researchers can find our work.
 :PROPERTIES:
 :CUSTOM_ID: data
 :END:
+
+Python Environment:
+https://www.dropbox.com/scl/fi/m3u1i5aoejf7ltoo30tl6/environment.sh?rlkey=s44j5sbqn5m7ri5hlxhk67xlw&st=fbxwbvxu&dl=1
 
 Code is now available on its own GitHub [[https://github.com/edwinhu/pin-code][page]]. A detailed description of the code
 is also available [[./pin-code][here]].
